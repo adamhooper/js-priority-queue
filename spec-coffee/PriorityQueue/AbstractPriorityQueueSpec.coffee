@@ -1,4 +1,4 @@
-define [ 'priv/AbstractPriorityQueue' ], (AbstractPriorityQueue) ->
+define [ 'PriorityQueue/AbstractPriorityQueue' ], (AbstractPriorityQueue) ->
   numberCompare = (a, b) -> a - b
 
   describe 'AbstractPriorityQueue', ->

@@ -1,2 +1,2 @@
-require [ 'priv/ArrayStrategy' ], (ArrayStrategy) ->
+require [ 'PriorityQueue/ArrayStrategy' ], (ArrayStrategy) ->
   StrategyHelper.describeStrategy('Sorted Array strategy', ArrayStrategy)

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "ArrayStrategy.js",
-  "sourceRoot": "../../coffee/priv/",
+  "sourceRoot": "../../coffee/PriorityQueue/",
   "sources": [
     "ArrayStrategy.coffee"
   ],

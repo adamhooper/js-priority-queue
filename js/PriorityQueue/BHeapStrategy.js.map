@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "BHeapStrategy.js",
-  "sourceRoot": "../../coffee/priv/",
+  "sourceRoot": "../../coffee/PriorityQueue/",
   "sources": [
     "BHeapStrategy.coffee"
   ],

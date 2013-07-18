@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "AbstractPriorityQueue.js",
-  "sourceRoot": "../../coffee/priv/",
+  "sourceRoot": "../../coffee/PriorityQueue/",
   "sources": [
     "AbstractPriorityQueue.coffee"
   ],

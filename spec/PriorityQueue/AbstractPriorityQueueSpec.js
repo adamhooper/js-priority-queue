@@ -1,5 +1,5 @@
 (function() {
-  define(['priv/AbstractPriorityQueue'], function(AbstractPriorityQueue) {
+  define(['PriorityQueue/AbstractPriorityQueue'], function(AbstractPriorityQueue) {
     var numberCompare;
     numberCompare = function(a, b) {
       return a - b;

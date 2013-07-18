@@ -1,5 +1,5 @@
 (function() {
-  require(['priv/ArrayStrategy'], function(ArrayStrategy) {
+  require(['PriorityQueue/ArrayStrategy'], function(ArrayStrategy) {
     return StrategyHelper.describeStrategy('Sorted Array strategy', ArrayStrategy);
   });
 

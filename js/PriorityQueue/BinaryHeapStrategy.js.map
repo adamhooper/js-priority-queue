@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "BinaryHeapStrategy.js",
-  "sourceRoot": "../../coffee/priv/",
+  "sourceRoot": "../../coffee/PriorityQueue/",
   "sources": [
     "BinaryHeapStrategy.coffee"
   ],

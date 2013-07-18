@@ -408,7 +408,7 @@ var requirejs, require, define;
 define("almond", function(){});
 
 (function() {
-  define('priv/AbstractPriorityQueue',[],function() {
+  define('PriorityQueue/AbstractPriorityQueue',[],function() {
     var AbstractPriorityQueue;
     return AbstractPriorityQueue = (function() {
       function AbstractPriorityQueue(options) {
@@ -454,7 +454,7 @@ define("almond", function(){});
 //@ sourceMappingURL=AbstractPriorityQueue.js.map
 */;
 (function() {
-  define('priv/ArrayStrategy',[],function() {
+  define('PriorityQueue/ArrayStrategy',[],function() {
     var ArrayStrategy, binarySearchForIndexReversed;
     binarySearchForIndexReversed = function(array, value, comparator) {
       var high, low, mid;
@@ -505,7 +505,7 @@ define("almond", function(){});
 //@ sourceMappingURL=ArrayStrategy.js.map
 */;
 (function() {
-  define('priv/BinaryHeapStrategy',[],function() {
+  define('PriorityQueue/BinaryHeapStrategy',[],function() {
     var BinaryHeapStrategy;
     return BinaryHeapStrategy = (function() {
       function BinaryHeapStrategy(options) {
@@ -601,7 +601,7 @@ define("almond", function(){});
 //@ sourceMappingURL=BinaryHeapStrategy.js.map
 */;
 (function() {
-  define('priv/BHeapStrategy',[],function() {
+  define('PriorityQueue/BHeapStrategy',[],function() {
     var BHeapStrategy;
     return BHeapStrategy = (function() {
       function BHeapStrategy(options) {
@@ -754,7 +754,7 @@ define("almond", function(){});
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('PriorityQueue',['./priv/AbstractPriorityQueue', './priv/ArrayStrategy', './priv/BinaryHeapStrategy', './priv/BHeapStrategy'], function(AbstractPriorityQueue, ArrayStrategy, BinaryHeapStrategy, BHeapStrategy) {
+  define('PriorityQueue',['./PriorityQueue/AbstractPriorityQueue', './PriorityQueue/ArrayStrategy', './PriorityQueue/BinaryHeapStrategy', './PriorityQueue/BHeapStrategy'], function(AbstractPriorityQueue, ArrayStrategy, BinaryHeapStrategy, BHeapStrategy) {
     var PriorityQueue;
     PriorityQueue = (function(_super) {
       __extends(PriorityQueue, _super);

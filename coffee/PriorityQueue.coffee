@@ -1,8 +1,8 @@
 define [
-  './priv/AbstractPriorityQueue'
-  './priv/ArrayStrategy'
-  './priv/BinaryHeapStrategy'
-  './priv/BHeapStrategy'
+  './PriorityQueue/AbstractPriorityQueue'
+  './PriorityQueue/ArrayStrategy'
+  './PriorityQueue/BinaryHeapStrategy'
+  './PriorityQueue/BHeapStrategy'
 ], (
   AbstractPriorityQueue
   ArrayStrategy,

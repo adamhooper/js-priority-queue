@@ -1,5 +1,5 @@
 (function() {
-  require(['priv/BHeapStrategy'], function(BHeapStrategy) {
+  require(['PriorityQueue/BHeapStrategy'], function(BHeapStrategy) {
     return StrategyHelper.describeStrategy('B-Heap strategy', BHeapStrategy);
   });
 
