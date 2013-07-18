@@ -1,0 +1,31 @@
+{
+  "name": "js-priority-queue",
+  "version": "0.0.1",
+  "description": "Priority queue data structures",
+  "main": "priority-queue.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamhooper/js-priority-queue"
+  },
+  "keywords": [
+    "priority",
+    "queue",
+    "bheap",
+    "b-heap",
+    "binary",
+    "heap",
+    "dequeue",
+    "comparator"
+  ],
+  "author": "Adam Hooper <adam@adamhooper.com>",
+  "license": "Public Domain",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-jasmine": "~0.5.1",
+    "grunt-template-jasmine-requirejs": "~0.1.3",
+    "grunt-requirejs": "~0.3.5"
+  }
+}
