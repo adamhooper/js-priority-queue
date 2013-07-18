@@ -64,9 +64,11 @@
     };
     return ArrayStrategy = (function() {
       function ArrayStrategy(options) {
+        var _ref;
         this.options = options;
         this.comparator = this.options.comparator;
-        this.data = [];
+        this.data = ((_ref = this.options.initialValues) != null ? _ref.slice(0) : void 0) || [];
+        this.data.sort(this.comparator).reverse();
       }
 
       ArrayStrategy.prototype.queue = function(value) {
@@ -99,12 +101,22 @@
     var BinaryHeapStrategy;
     return BinaryHeapStrategy = (function() {
       function BinaryHeapStrategy(options) {
+        var _ref;
         this.comparator = (options != null ? options.comparator : void 0) || function(a, b) {
           return a - b;
         };
         this.length = 0;
-        this.data = [];
+        this.data = ((_ref = options.initialValues) != null ? _ref.slice(0) : void 0) || [];
+        this._heapify();
       }
+
+      BinaryHeapStrategy.prototype._heapify = function() {
+        var i, _i, _ref;
+        for (i = _i = 1, _ref = this.data.length; 1 <= _ref ? _i < _ref : _i > _ref; i = 1 <= _ref ? ++_i : --_i) {
+          this._bubbleUp(i);
+        }
+        return void 0;
+      };
 
       BinaryHeapStrategy.prototype.queue = function(value) {
         this.data.push(value);
@@ -130,29 +142,30 @@
       BinaryHeapStrategy.prototype._bubbleUp = function(pos) {
         var parent, x;
         while (pos > 0) {
-          parent = pos >>> 1;
+          parent = (pos - 1) >>> 1;
           if (this.comparator(this.data[pos], this.data[parent]) < 0) {
             x = this.data[parent];
             this.data[parent] = this.data[pos];
             this.data[pos] = x;
             pos = parent;
           } else {
-            pos = 0;
+            break;
           }
         }
         return void 0;
       };
 
       BinaryHeapStrategy.prototype._bubbleDown = function(pos) {
-        var left, minIndex, right, x;
+        var last, left, minIndex, right, x;
+        last = this.data.length - 1;
         while (true) {
-          left = pos << 1 + 1;
+          left = (pos << 1) + 1;
           right = left + 1;
           minIndex = pos;
-          if (left < this.data.length && this.comparator(this.data[left], this.data[minIndex]) < 0) {
+          if (left <= last && this.comparator(this.data[left], this.data[minIndex]) < 0) {
             minIndex = left;
           }
-          if (right < this.data.length && this.comparator(this.data[right], this.data[minIndex]) < 0) {
+          if (right <= last && this.comparator(this.data[right], this.data[minIndex]) < 0) {
             minIndex = right;
           }
           if (minIndex !== pos) {
@@ -182,7 +195,7 @@
     var BHeapStrategy;
     return BHeapStrategy = (function() {
       function BHeapStrategy(options) {
-        var arr, i, shift, _i, _ref;
+        var arr, i, shift, value, _i, _j, _len, _ref, _ref1;
         this.comparator = (options != null ? options.comparator : void 0) || function(a, b) {
           return a - b;
         };
@@ -202,6 +215,13 @@
         }
         this._memory = [];
         this._mask = this.pageSize - 1;
+        if (options.initialValues) {
+          _ref1 = options.initialValues;
+          for (_j = 0, _len = _ref1.length; _j < _len; _j++) {
+            value = _ref1[_j];
+            this.queue(value);
+          }
+        }
       }
 
       BHeapStrategy.prototype.queue = function(value) {
