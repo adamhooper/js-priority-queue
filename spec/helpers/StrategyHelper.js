@@ -2,6 +2,9 @@
   window.StrategyHelper = (function() {
     var numberComparator, queueToArray;
     numberComparator = function(a, b) {
+      if ((a == null) || (b == null)) {
+        throw 'Invalid compare';
+      }
       return a - b;
     };
     queueToArray = function(queue, nElements) {

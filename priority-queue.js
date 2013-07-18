@@ -112,8 +112,10 @@
 
       BinaryHeapStrategy.prototype._heapify = function() {
         var i, _i, _ref;
-        for (i = _i = 1, _ref = this.data.length; 1 <= _ref ? _i < _ref : _i > _ref; i = 1 <= _ref ? ++_i : --_i) {
-          this._bubbleUp(i);
+        if (this.data.length > 0) {
+          for (i = _i = 1, _ref = this.data.length; 1 <= _ref ? _i < _ref : _i > _ref; i = 1 <= _ref ? ++_i : --_i) {
+            this._bubbleUp(i);
+          }
         }
         return void 0;
       };

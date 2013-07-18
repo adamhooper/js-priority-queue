@@ -7,8 +7,9 @@ define ->
       @_heapify()
 
     _heapify: ->
-      for i in [ 1 ... @data.length ]
-        @_bubbleUp(i)
+      if @data.length > 0
+        for i in [ 1 ... @data.length ]
+          @_bubbleUp(i)
       undefined
 
     queue: (value) ->

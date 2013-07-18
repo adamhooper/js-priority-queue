@@ -1,5 +1,7 @@
 window.StrategyHelper = (->
-  numberComparator = (a, b) -> a - b
+  numberComparator = (a, b) ->
+    throw 'Invalid compare' if !a? || !b?
+    a - b
 
   queueToArray = (queue, nElements) -> queue.dequeue() for i in [ 0 ... nElements ]
 
