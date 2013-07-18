@@ -3,7 +3,7 @@
     var BHeapStrategy;
     return BHeapStrategy = (function() {
       function BHeapStrategy(options) {
-        var arr, i, shift, _i, _ref;
+        var arr, i, shift, value, _i, _j, _len, _ref, _ref1;
         this.comparator = (options != null ? options.comparator : void 0) || function(a, b) {
           return a - b;
         };
@@ -23,6 +23,13 @@
         }
         this._memory = [];
         this._mask = this.pageSize - 1;
+        if (options.initialValues) {
+          _ref1 = options.initialValues;
+          for (_j = 0, _len = _ref1.length; _j < _len; _j++) {
+            value = _ref1[_j];
+            this.queue(value);
+          }
+        }
       }
 
       BHeapStrategy.prototype.queue = function(value) {

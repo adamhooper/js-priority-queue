@@ -17,6 +17,17 @@
         return describe(description, function() {
           var priv;
           priv = void 0;
+          describe('with initial values', function() {
+            beforeEach(function() {
+              return priv = new strategy({
+                comparator: numberComparator,
+                initialValues: [5, 2, 3, 4, 1, 6, 7]
+              });
+            });
+            return it('should dequeue the initial values in order', function() {
+              return expect(queueToArray(priv, 7)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+            });
+          });
           return describe('starting with some elements', function() {
             beforeEach(function() {
               priv = new strategy({
@@ -24,7 +35,10 @@
               });
               priv.queue(3);
               priv.queue(1);
-              return priv.queue(2);
+              priv.queue(7);
+              priv.queue(2);
+              priv.queue(6);
+              return priv.queue(5);
             });
             describe('peek', function() {
               it('should see the first element', function() {

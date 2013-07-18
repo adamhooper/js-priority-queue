@@ -55,6 +55,11 @@ This is the argument we would pass to
     var compareNumbers = function(a, b) { return a - b; };
     var queue = new PriorityQueue({ comparator: compareNumbers });
 
+You can also pass initial values, in any order. With lots of values, it's
+faster to load them all at once than one at a time.
+
+    var queue = new PriorityQueue({ initialValues: [ 1, 2, 3 ] })
+
 Strategies
 ==========
 
@@ -82,7 +87,7 @@ You'll see running times like this:
 
 | Operation | Array | Binary heap | B-Heap |
 | --------- | ----- | ----------- | -------------- |
-| Create | O(1) | O(1) | O(1) |
+| Create | O(n lg n) | O(n) | O(n) |
 | Queue | O(n) (often slow) | O(lg n) (fast) | O(lg n) |
 | Peek | O(1) | O(1) | O(1) |
 | Dequeue | O(1) (fast) | O(lg n) | O(lg n) |

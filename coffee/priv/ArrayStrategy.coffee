@@ -18,7 +18,8 @@ define ->
   class ArrayStrategy
     constructor: (@options) ->
       @comparator = @options.comparator
-      @data = []
+      @data = (@options.initialValues?.slice(0) || [])
+      @data.sort(@comparator).reverse()
 
     queue: (value) ->
       pos = binarySearchForIndexReversed(@data, value, @comparator)

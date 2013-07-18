@@ -17,9 +17,11 @@
     };
     return ArrayStrategy = (function() {
       function ArrayStrategy(options) {
+        var _ref;
         this.options = options;
         this.comparator = this.options.comparator;
-        this.data = [];
+        this.data = ((_ref = this.options.initialValues) != null ? _ref.slice(0) : void 0) || [];
+        this.data.sort(this.comparator).reverse();
       }
 
       ArrayStrategy.prototype.queue = function(value) {

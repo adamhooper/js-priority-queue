@@ -25,6 +25,9 @@ define ->
       @_memory = [] # Array of pages; each page is an Array
       @_mask = @pageSize - 1 # for & ops
 
+      if options.initialValues
+        @queue(value) for value in options.initialValues
+
     queue: (value) ->
       @length += 1
       @_write(@length, value)

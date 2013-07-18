@@ -7,12 +7,25 @@ window.StrategyHelper = (->
     describe description, ->
       priv = undefined
 
+      describe 'with initial values', ->
+        beforeEach ->
+          priv = new strategy(
+            comparator: numberComparator
+            initialValues: [ 5, 2, 3, 4, 1, 6, 7 ]
+          )
+
+        it 'should dequeue the initial values in order', ->
+          expect(queueToArray(priv, 7)).toEqual([1, 2, 3, 4, 5, 6, 7])
+
       describe 'starting with some elements', ->
         beforeEach ->
           priv = new strategy(comparator: numberComparator)
           priv.queue(3)
           priv.queue(1)
+          priv.queue(7)
           priv.queue(2)
+          priv.queue(6)
+          priv.queue(5)
 
         describe 'peek', ->
           it 'should see the first element', ->
