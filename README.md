@@ -68,22 +68,30 @@ fewer array elements when queueing (though each element is written more slowly).
 
 Finally, we can use a [B-Heap](http://en.wikipedia.org/wiki/B-heap). It's like a
 binary heap, except it orders elements such that during a single operation,
-writes occur closer to each other in memory. That can give a speed win.
+writes occur closer to each other in memory. Unfortunately, it's slower to
+calculate where in memory each write should occur (it costs a function call
+instead of a bit-shift). So while it's fast in theory, it's slower in practice.
 
 Create the queues like this:
 
     var queue = new PriorityQueue({ strategy: PriorityQueue.ArrayStrategy }); // Array
-    var queue = new PriorityQueue({ strategy: PriorityQueue.BinaryHeapStrategy }); // simple binary heap
-    var queue = new PriorityQueue({ strategy: PriorityQueue.BHeapStrategy }); // default
+    var queue = new PriorityQueue({ strategy: PriorityQueue.BinaryHeapStrategy }); // Default
+    var queue = new PriorityQueue({ strategy: PriorityQueue.BHeapStrategy }); // Slower
 
 You'll see running times like this:
 
 | Operation | Array | Binary heap | B-Heap |
 | --------- | ----- | ----------- | -------------- |
 | Create | O(1) | O(1) | O(1) |
-| Queue | O(n) (often slow) | O(lg n) (fast) | O(lg n) (fast) |
+| Queue | O(n) (often slow) | O(lg n) (fast) | O(lg n) |
 | Peek | O(1) | O(1) | O(1) |
-| Dequeue | O(1) | O(lg n) | O(lg n) |
+| Dequeue | O(1) (fast) | O(lg n) | O(lg n) |
+
+According to [JsPerf](http://jsperf.com/js-priority-queue-queue-dequeue), the
+fastest strategy for most cases is `BinaryHeapStrategy`. Only use `ArrayStrategy`
+only if you're queuing items in a very particular order. Don't use
+`BHeapStrategy`, except as a lesson in how sometimes miracles in one
+programming language aren't great in other languages.
 
 Contributing
 ============
