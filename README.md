@@ -29,21 +29,21 @@ Include it through [RequireJS](http://requirejs.org/).
 Then write code like this:
 
     require([ 'vendor/priority-queue' ], function(PriorityQueue) {
-      var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; });
+      var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; }});
       queue.queue(5);
       queue.queue(3);
       queue.queue(2);
-      var lowest = queue.pop(); // returns 2
+      var lowest = queue.dequeue(); // returns 5
     });
 
 If you don't like RequireJS, you can download the standalone version,
 `priority-queue.no-require.js`, and write:
 
-    var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; });
+    var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; }});
     queue.queue(5);
     queue.queue(3);
     queue.queue(2);
-    var lowest = queue.pop(); // returns 2
+    var lowest = queue.dequeue(); // returns 5
 
 Options
 =======
