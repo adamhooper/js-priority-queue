@@ -1,3 +1,4 @@
+define = require('amdefine')(module) if !define?
 define [
   './PriorityQueue/AbstractPriorityQueue'
   './PriorityQueue/ArrayStrategy'

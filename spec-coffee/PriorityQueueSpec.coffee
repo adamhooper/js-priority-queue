@@ -1,3 +1,4 @@
+define = require('amdefine')(module) if !define?
 define [ 'PriorityQueue' ], (PriorityQueue) ->
   numberCompare = (a, b) -> a - b
 

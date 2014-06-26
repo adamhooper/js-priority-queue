@@ -1,4 +1,10 @@
 (function() {
+  var define;
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
+
   define(function() {
     var AbstractPriorityQueue;
     return AbstractPriorityQueue = (function() {

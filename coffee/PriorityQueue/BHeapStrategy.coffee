@@ -6,6 +6,7 @@
 # Why a B-Heap and not a binary heap? A B-Heap improves memory locality. Since
 # we often deal with subtrees, we want the data in subtrees to be close
 # together. A binary tree is terrible at this.
+define = require('amdefine')(module) if !define?
 define ->
   class BHeapStrategy
     constructor: (options) ->

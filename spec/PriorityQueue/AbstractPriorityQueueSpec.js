@@ -1,4 +1,10 @@
 (function() {
+  var define;
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
+
   define(['PriorityQueue/AbstractPriorityQueue'], function(AbstractPriorityQueue) {
     var numberCompare;
     numberCompare = function(a, b) {

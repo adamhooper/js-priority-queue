@@ -1,3 +1,4 @@
+define = require('amdefine')(module) if !define?
 define ->
   binarySearchForIndexReversed = (array, value, comparator) ->
     low = 0

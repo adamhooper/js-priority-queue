@@ -408,6 +408,12 @@ var requirejs, require, define;
 define("almond", function(){});
 
 (function() {
+  var define;
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
+
   define('PriorityQueue/AbstractPriorityQueue',[],function() {
     var AbstractPriorityQueue;
     return AbstractPriorityQueue = (function() {
@@ -454,6 +460,12 @@ define("almond", function(){});
 //@ sourceMappingURL=AbstractPriorityQueue.js.map
 */;
 (function() {
+  var define;
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
+
   define('PriorityQueue/ArrayStrategy',[],function() {
     var ArrayStrategy, binarySearchForIndexReversed;
     binarySearchForIndexReversed = function(array, value, comparator) {
@@ -505,6 +517,12 @@ define("almond", function(){});
 //@ sourceMappingURL=ArrayStrategy.js.map
 */;
 (function() {
+  var define;
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
+
   define('PriorityQueue/BinaryHeapStrategy',[],function() {
     var BinaryHeapStrategy;
     return BinaryHeapStrategy = (function() {
@@ -601,6 +619,12 @@ define("almond", function(){});
 //@ sourceMappingURL=BinaryHeapStrategy.js.map
 */;
 (function() {
+  var define;
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
+
   define('PriorityQueue/BHeapStrategy',[],function() {
     var BHeapStrategy;
     return BHeapStrategy = (function() {
@@ -751,8 +775,13 @@ define("almond", function(){});
 //@ sourceMappingURL=BHeapStrategy.js.map
 */;
 (function() {
-  var __hasProp = {}.hasOwnProperty,
+  var define,
+    __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  if (typeof define === "undefined" || define === null) {
+    define = require('amdefine')(module);
+  }
 
   define('PriorityQueue',['./PriorityQueue/AbstractPriorityQueue', './PriorityQueue/ArrayStrategy', './PriorityQueue/BinaryHeapStrategy', './PriorityQueue/BHeapStrategy'], function(AbstractPriorityQueue, ArrayStrategy, BinaryHeapStrategy, BHeapStrategy) {
     var PriorityQueue;
