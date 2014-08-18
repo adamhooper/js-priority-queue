@@ -1,1 +1,1 @@
-module.exports = require('./js/PriorityQueue')
+module.exports = require('./src/PriorityQueue')

@@ -24,20 +24,13 @@ Installing
 Download `priority-queue.js`. Alternatively, install through Bower:
 `bower install js-priority-queue`
 
-Include it through [RequireJS](http://requirejs.org/).
+Include it through [RequireJS](http://requirejs.org/) or
+[Browserify](http://browserify.org). Or, to pollute your global scope, insert
+this in your HTML:
+
+    <script src="priority-queue.js"></script>
 
 Then write code like this:
-
-    require([ 'vendor/priority-queue' ], function(PriorityQueue) {
-      var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; }});
-      queue.queue(5);
-      queue.queue(3);
-      queue.queue(2);
-      var lowest = queue.dequeue(); // returns 5
-    });
-
-If you don't like RequireJS, you can download the standalone version,
-`priority-queue.no-require.js`, and write:
 
     var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; }});
     queue.queue(5);
@@ -104,8 +97,8 @@ Contributing
 1. Fork this repository
 2. Run `npm install`
 3. Write the behavior you expect in `spec-coffee/`
-4. Edit files in `coffee/` until `grunt test` says you're done
-5. Run `grunt` to update `priority-queue.js` and `priority-queue.min.js`
+4. Edit files in `coffee/` until `gulp test` says you're done
+5. Run `gulp` to update `priority-queue.js` and `priority-queue.min.js`
 6. Submit a pull request
 
 License

@@ -1,6 +1,6 @@
 {
   "name": "js-priority-queue",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "main": "priority-queue.js",
   "ignore": [
     "**/.*",

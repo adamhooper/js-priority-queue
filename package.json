@@ -1,6 +1,6 @@
 {
   "name": "js-priority-queue",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Priority queue data structures",
   "main": "index.js",
   "scripts": {},
@@ -22,13 +22,22 @@
   "license": "Public Domain",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-contrib-jasmine": "~0.5.1",
-    "grunt-template-jasmine-requirejs": "~0.1.3",
-    "grunt-requirejs": "~0.3.5"
-  },
-  "dependencies": {
-    "amdefine": "~0.1.0"
+    "browserify": "~5.10.0",
+    "chai": "~1.9.1",
+    "coffeeify": "~0.7.0",
+    "gulp": "~3.8.7",
+    "gulp-coffee": "~2.1.1",
+    "gulp-mocha": "~1.0.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-rimraf": "~0.1.0",
+    "gulp-uglify": "~0.3.1",
+    "gulp-util": "~3.0.0",
+    "karma": "~0.12.21",
+    "karma-browserifast": "~0.7.0",
+    "karma-chai": "~0.1.0",
+    "karma-mocha": "~0.1.7",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "mocha": "~1.21.4",
+    "vinyl-source-stream": "~0.1.1"
   }
 }
