@@ -21,8 +21,8 @@ Why use this library? Two reasons:
 Installing
 ==========
 
-Download `priority-queue.js`. Alternatively, install through Bower:
-`bower install js-priority-queue`
+You can `npm install js-priority-queue` or `bower install js-priority-queue`.
+Alternatively, just download `priority-queue.js` from this directory.
 
 Include it through [RequireJS](http://requirejs.org/) or
 [Browserify](http://browserify.org). Or, to pollute your global scope, insert
