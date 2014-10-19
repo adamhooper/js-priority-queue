@@ -2,7 +2,7 @@
   "name": "js-priority-queue",
   "version": "0.1.0",
   "description": "Priority queue data structures",
-  "main": "index.js",
+  "main": "priority-queue.js",
   "scripts": {},
   "repository": {
     "type": "git",
