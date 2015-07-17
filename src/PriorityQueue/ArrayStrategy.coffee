@@ -30,3 +30,7 @@ module.exports = class ArrayStrategy
 
   peek: ->
     @data[@data.length - 1]
+
+  clear: ->
+    @data.length = 0
+    undefined

@@ -18,3 +18,7 @@ module.exports = class AbstractPriorityQueue
   peek: (value) ->
     throw 'Empty queue' if !@length
     @priv.peek()
+
+  clear: ->
+    @length = 0
+    @priv.clear()

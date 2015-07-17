@@ -69,3 +69,10 @@ module.exports = StrategyHelper =
           it 'should queue a duplicate at the end', ->
             priv.queue(3)
             expect(queueToArray(priv, 4)).to.deep.equal([1, 2, 3, 3])
+
+        describe 'clear', ->
+          it 'should remove all elements', ->
+            expect(priv.peek()).to.equal(1)
+            priv.clear()
+            priv.queue(10)
+            expect(priv.peek()).to.equal(10)
