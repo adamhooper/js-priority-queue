@@ -1,17 +1,16 @@
 browserify = require('browserify')
 coffeeify = require('coffeeify')
+del = require('del')
 gulp = require('gulp')
 gutil = require('gulp-util')
 karma = require('karma').server
 mocha = require('gulp-mocha')
 rename = require('gulp-rename')
-rimraf = require('gulp-rimraf')
 source = require('vinyl-source-stream')
 uglify = require('gulp-uglify')
 
-gulp.task 'clean', ->
-  gulp.src('./priority-queue*.js', read: false)
-    .pipe(rimraf())
+gulp.task 'clean', (done) ->
+  del('./priority-queue*.js', done)
 
 gulp.task 'browserify', [ 'clean' ], ->
   b = browserify('./src/PriorityQueue.coffee', {

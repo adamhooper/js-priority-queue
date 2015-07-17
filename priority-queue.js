@@ -1,4 +1,4 @@
-!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.PriorityQueue=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.PriorityQueue = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var AbstractPriorityQueue, ArrayStrategy, BHeapStrategy, BinaryHeapStrategy, PriorityQueue,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -34,7 +34,6 @@ PriorityQueue.BinaryHeapStrategy = BinaryHeapStrategy;
 PriorityQueue.BHeapStrategy = BHeapStrategy;
 
 module.exports = PriorityQueue;
-
 
 
 },{"./PriorityQueue/AbstractPriorityQueue":2,"./PriorityQueue/ArrayStrategy":3,"./PriorityQueue/BHeapStrategy":4,"./PriorityQueue/BinaryHeapStrategy":5}],2:[function(require,module,exports){
@@ -73,10 +72,14 @@ module.exports = AbstractPriorityQueue = (function() {
     return this.priv.peek();
   };
 
+  AbstractPriorityQueue.prototype.clear = function() {
+    this.length = 0;
+    return this.priv.clear();
+  };
+
   return AbstractPriorityQueue;
 
 })();
-
 
 
 },{}],3:[function(require,module,exports){
@@ -121,10 +124,14 @@ module.exports = ArrayStrategy = (function() {
     return this.data[this.data.length - 1];
   };
 
+  ArrayStrategy.prototype.clear = function() {
+    this.data.length = 0;
+    return void 0;
+  };
+
   return ArrayStrategy;
 
 })();
-
 
 
 },{}],4:[function(require,module,exports){
@@ -182,6 +189,12 @@ module.exports = BHeapStrategy = (function() {
 
   BHeapStrategy.prototype.peek = function() {
     return this._read(1);
+  };
+
+  BHeapStrategy.prototype.clear = function() {
+    this.length = 0;
+    this._memory.length = 0;
+    return void 0;
   };
 
   BHeapStrategy.prototype._write = function(index, value) {
@@ -272,7 +285,6 @@ module.exports = BHeapStrategy = (function() {
 })();
 
 
-
 },{}],5:[function(require,module,exports){
 var BinaryHeapStrategy;
 
@@ -316,6 +328,12 @@ module.exports = BinaryHeapStrategy = (function() {
 
   BinaryHeapStrategy.prototype.peek = function() {
     return this.data[0];
+  };
+
+  BinaryHeapStrategy.prototype.clear = function() {
+    this.length = 0;
+    this.data.length = 0;
+    return void 0;
   };
 
   BinaryHeapStrategy.prototype._bubbleUp = function(pos) {
@@ -362,7 +380,6 @@ module.exports = BinaryHeapStrategy = (function() {
   return BinaryHeapStrategy;
 
 })();
-
 
 
 },{}]},{},[1])(1)
