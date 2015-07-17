@@ -45,6 +45,11 @@ module.exports = class BHeapStrategy
   peek: ->
     @_read(1)
 
+  clear: ->
+    @length = 0
+    @_memory.length = 0
+    undefined
+
   _write: (index, value) ->
     page = index >> @_shift
     while page >= @_memory.length # we want page < @_memory.length

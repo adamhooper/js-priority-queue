@@ -27,6 +27,11 @@ module.exports = class BinaryHeapStrategy
   peek: ->
     @data[0]
 
+  clear: ->
+    @length = 0
+    @data.length = 0
+    undefined
+
   _bubbleUp: (pos) ->
     while pos > 0
       parent = (pos - 1) >>> 1

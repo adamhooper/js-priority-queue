@@ -10,6 +10,7 @@ A priority queue is a data structure with these operations:
 | Length | `var length = queue.length;` | Returns the number of elements in the queue |
 | Peek | `var firstItem = queue.peek();` | Returns the smallest item in the queue and leaves the queue unchanged |
 | Dequeue | `var firstItem = queue.dequeue();` | Returns the smallest item in the queue and removes it from the queue |
+| Clear | `queue.clear();` | Removes all values from the queue |
 
 You cannot access the data in any other way: you must dequeue or peek.
 
