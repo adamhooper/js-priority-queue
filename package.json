@@ -24,6 +24,7 @@
   "devDependencies": {
     "browserify": "^11.0.0",
     "chai": "^3.1.0",
+    "coffee-script": "^1.10.0",
     "coffeeify": "^1.1.0",
     "del": "^1.2.0",
     "gulp": "^3.9.0",
