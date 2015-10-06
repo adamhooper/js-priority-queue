@@ -3,7 +3,7 @@ module.exports = class AbstractPriorityQueue
     throw 'Must pass options.strategy, a strategy' if !options?.strategy?
     throw 'Must pass options.comparator, a comparator' if !options?.comparator?
     @priv = new options.strategy(options)
-    @length = @priv.data.length 
+    @length = options?.initialValues?.length || 0
 
   queue: (value) ->
     @length++
