@@ -1,7 +1,7 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.PriorityQueue = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var AbstractPriorityQueue, ArrayStrategy, BHeapStrategy, BinaryHeapStrategy, PriorityQueue,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 AbstractPriorityQueue = require('./PriorityQueue/AbstractPriorityQueue');
 
@@ -11,8 +11,8 @@ BinaryHeapStrategy = require('./PriorityQueue/BinaryHeapStrategy');
 
 BHeapStrategy = require('./PriorityQueue/BHeapStrategy');
 
-PriorityQueue = (function(_super) {
-  __extends(PriorityQueue, _super);
+PriorityQueue = (function(superClass) {
+  extend(PriorityQueue, superClass);
 
   function PriorityQueue(options) {
     options || (options = {});
@@ -41,6 +41,7 @@ var AbstractPriorityQueue;
 
 module.exports = AbstractPriorityQueue = (function() {
   function AbstractPriorityQueue(options) {
+    var ref;
     if ((options != null ? options.strategy : void 0) == null) {
       throw 'Must pass options.strategy, a strategy';
     }
@@ -48,7 +49,7 @@ module.exports = AbstractPriorityQueue = (function() {
       throw 'Must pass options.comparator, a comparator';
     }
     this.priv = new options.strategy(options);
-    this.length = 0;
+    this.length = (options != null ? (ref = options.initialValues) != null ? ref.length : void 0 : void 0) || 0;
   }
 
   AbstractPriorityQueue.prototype.queue = function(value) {
@@ -102,10 +103,10 @@ binarySearchForIndexReversed = function(array, value, comparator) {
 
 module.exports = ArrayStrategy = (function() {
   function ArrayStrategy(options) {
-    var _ref;
+    var ref;
     this.options = options;
     this.comparator = this.options.comparator;
-    this.data = ((_ref = this.options.initialValues) != null ? _ref.slice(0) : void 0) || [];
+    this.data = ((ref = this.options.initialValues) != null ? ref.slice(0) : void 0) || [];
     this.data.sort(this.comparator).reverse();
   }
 
@@ -139,7 +140,7 @@ var BHeapStrategy;
 
 module.exports = BHeapStrategy = (function() {
   function BHeapStrategy(options) {
-    var arr, i, shift, value, _i, _j, _len, _ref, _ref1;
+    var arr, i, j, k, len, ref, ref1, shift, value;
     this.comparator = (options != null ? options.comparator : void 0) || function(a, b) {
       return a - b;
     };
@@ -154,15 +155,15 @@ module.exports = BHeapStrategy = (function() {
     }
     this._shift = shift;
     this._emptyMemoryPageTemplate = arr = [];
-    for (i = _i = 0, _ref = this.pageSize; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+    for (i = j = 0, ref = this.pageSize; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
       arr.push(null);
     }
     this._memory = [];
     this._mask = this.pageSize - 1;
     if (options.initialValues) {
-      _ref1 = options.initialValues;
-      for (_j = 0, _len = _ref1.length; _j < _len; _j++) {
-        value = _ref1[_j];
+      ref1 = options.initialValues;
+      for (k = 0, len = ref1.length; k < len; k++) {
+        value = ref1[k];
         this.queue(value);
       }
     }
@@ -290,19 +291,19 @@ var BinaryHeapStrategy;
 
 module.exports = BinaryHeapStrategy = (function() {
   function BinaryHeapStrategy(options) {
-    var _ref;
+    var ref;
     this.comparator = (options != null ? options.comparator : void 0) || function(a, b) {
       return a - b;
     };
     this.length = 0;
-    this.data = ((_ref = options.initialValues) != null ? _ref.slice(0) : void 0) || [];
+    this.data = ((ref = options.initialValues) != null ? ref.slice(0) : void 0) || [];
     this._heapify();
   }
 
   BinaryHeapStrategy.prototype._heapify = function() {
-    var i, _i, _ref;
+    var i, j, ref;
     if (this.data.length > 0) {
-      for (i = _i = 1, _ref = this.data.length; 1 <= _ref ? _i < _ref : _i > _ref; i = 1 <= _ref ? ++_i : --_i) {
+      for (i = j = 1, ref = this.data.length; 1 <= ref ? j < ref : j > ref; i = 1 <= ref ? ++j : --j) {
         this._bubbleUp(i);
       }
     }
