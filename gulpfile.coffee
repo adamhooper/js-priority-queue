@@ -8,6 +8,7 @@ mocha = require('gulp-mocha')
 rename = require('gulp-rename')
 source = require('vinyl-source-stream')
 uglify = require('gulp-uglify')
+derequire = require('gulp-derequire')
 
 gulp.task 'clean', (done) ->
   del('./priority-queue*.js', done)
@@ -22,6 +23,7 @@ gulp.task 'browserify', [ 'clean' ], ->
   b.bundle()
     .on('error', (e) -> gutil.log('Browserify error', e))
     .pipe(source('priority-queue.js'))
+    .pipe(derequire())
     .pipe(gulp.dest('.'))
 
 gulp.task 'minify', [ 'browserify' ], ->
