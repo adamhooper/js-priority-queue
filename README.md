@@ -29,15 +29,19 @@ Include it through [RequireJS](http://requirejs.org/) or
 [Browserify](http://browserify.org). Or, to pollute your global scope, insert
 this in your HTML:
 
-    <script src="priority-queue.js"></script>
+```html
+<script src="priority-queue.js"></script>
+```
 
 Then write code like this:
 
-    var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; }});
-    queue.queue(5);
-    queue.queue(3);
-    queue.queue(2);
-    var lowest = queue.dequeue(); // returns 5
+```js
+var queue = new PriorityQueue({ comparator: function(a, b) { return b - a; }});
+queue.queue(5);
+queue.queue(3);
+queue.queue(2);
+var lowest = queue.dequeue(); // returns 5
+```
 
 Options
 =======
@@ -46,13 +50,17 @@ How exactly will these elements be ordered? Let's use the `comparator` option.
 This is the argument we would pass to
 [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
 
-    var compareNumbers = function(a, b) { return a - b; };
-    var queue = new PriorityQueue({ comparator: compareNumbers });
+```js
+var compareNumbers = function(a, b) { return a - b; };
+var queue = new PriorityQueue({ comparator: compareNumbers });
+```
 
 You can also pass initial values, in any order. With lots of values, it's
 faster to load them all at once than one at a time.
 
-    var queue = new PriorityQueue({ initialValues: [ 1, 2, 3 ] })
+```js
+var queue = new PriorityQueue({ initialValues: [ 1, 2, 3 ] })
+```
 
 Strategies
 ==========
@@ -73,9 +81,11 @@ instead of a bit-shift). So while it's fast in theory, it's slower in practice.
 
 Create the queues like this:
 
-    var queue = new PriorityQueue({ strategy: PriorityQueue.ArrayStrategy }); // Array
-    var queue = new PriorityQueue({ strategy: PriorityQueue.BinaryHeapStrategy }); // Default
-    var queue = new PriorityQueue({ strategy: PriorityQueue.BHeapStrategy }); // Slower
+```js
+var queue = new PriorityQueue({ strategy: PriorityQueue.ArrayStrategy }); // Array
+var queue = new PriorityQueue({ strategy: PriorityQueue.BinaryHeapStrategy }); // Default
+var queue = new PriorityQueue({ strategy: PriorityQueue.BHeapStrategy }); // Slower
+```
 
 You'll see running times like this:
 
