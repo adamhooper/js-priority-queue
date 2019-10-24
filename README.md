@@ -102,6 +102,8 @@ only if you're queuing items in a very particular order. Don't use
 `BHeapStrategy`, except as a lesson in how sometimes miracles in one
 programming language aren't great in other languages.
 
+If no strategy specified in parameters, the `BinaryHeapStrategy` will be used
+
 Contributing
 ============
 
