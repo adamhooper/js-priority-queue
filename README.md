@@ -66,18 +66,18 @@ Strategies
 ==========
 
 We can implement this with a regular `Array`. We'll keep it sorted inversely,
-so `queue.dequeue()` maps to `array.pop()`.
+so `queue.dequeue()` maps to `array.pop()`. Each `queue()` is a `splice()`,
+which rewrites the entire array. This is fast for tiny queues.
 
-But with an `Array`, we'll need to `splice()`, which can affect every single
-element in the array. An alternative is to create a
-[Binary Heap](http://en.wikipedia.org/wiki/Binary_heap), which writes far
-fewer array elements when queueing (though each element is written more slowly).
+An alternative is a [Binary Heap](http://en.wikipedia.org/wiki/Binary_heap): it
+modifies just a few array elements when queueing (though each modification has
+a cost).
 
 Finally, we can use a [B-Heap](http://en.wikipedia.org/wiki/B-heap). It's like a
-binary heap, except it orders elements such that during a single operation,
-writes occur closer to each other in memory. Unfortunately, it's slower to
-calculate where in memory each write should occur (it costs a function call
-instead of a bit-shift). So while it's fast in theory, it's slower in practice.
+binary heap, except its modifications often occur close together in memory.
+Unfortunately, calculating _where_ in memory the modifications should occur is
+slower. (It costs a function call instead of a bit-shift.) So while B-heap is
+fast in theory, it's slow in practice.
 
 Create the queues like this:
 
@@ -97,10 +97,11 @@ You'll see running times like this:
 | Dequeue | O(1) (fast) | O(lg n) | O(lg n) |
 
 According to [JsPerf](http://jsperf.com/js-priority-queue-queue-dequeue), the
-fastest strategy for most cases is `BinaryHeapStrategy`. Only use `ArrayStrategy`
-only if you're queuing items in a very particular order. Don't use
-`BHeapStrategy`, except as a lesson in how sometimes miracles in one
-programming language aren't great in other languages.
+fastest strategy for most cases is `BinaryHeapStrategy`. Use `ArrayStrategy`
+in edge cases, after performance-testing your specific data. Don't use
+`BHeapStrategy`: it's a lesson that a miracle in C can flop in JavaScript.
+
+The default strategy is `BinaryHeapStrategy`.
 
 Contributing
 ============
